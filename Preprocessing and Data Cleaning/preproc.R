@@ -3,9 +3,9 @@
 #Image: vector listing all of the Image's modalities.
 #Animal: vector listing all of the animal species corresponding to each Image modality.
 #ID: vector listing all of the subjects corresponding to each Image modality.
-#microglia: should the modality "Microglia" be encluded in Shape? (Cellls with MajorAxisLength in [5,7) micron -> Microglia).
+#microglia: should the modality "Microglia" be included in Shape? (Cellls with MajorAxisLength in [5,7) micron -> Microglia).
 #cut: should problematic observations be deleted?
-#threshold: vector listing the minimum and maximum thersholds to apply on the data. If only one threshold should be considered, mark the other one as NA.
+#threshold: vector listing the minimum and maximum thresholds to apply on the data. If only one threshold should be considered, mark the other one as NA.
 #Example: type 1 -> threshold=c(.05,.95) or c(.05,NA) or c(NA,.95); type=2 -> threshold=c(34,200) or c(34,NA) or c(NA,200).
 #type=3 doesn't require the specification of the threshold parameter.
 #by: column of data on which the threshold(s) is going to be applied.
@@ -293,11 +293,11 @@ preproc=function(data,Image,Animal,ID,microglia=F,cut=F,threshold=NA,by=NA,type=
     }
   }
   
-  #MajorAxisLength must be more than or equal to MinorAxisLength
+  #MajorAxisLength must be greater than or equal to MinorAxisLength
   #Area must be less than or equal to ConvexArea
   #Ngb 50 must be less than or equal to Ngb 100
   #Min/Mean/Max Intensity must be increasing
-  #Solidity must be more than or equal to Extent
+  #Solidity must be greater than or equal to Extent
   a=any(data$MajorAxisLength<data$MinorAxisLength)
   if (a==T){
     w=which(data$MajorAxisLength<data$MinorAxisLength)
